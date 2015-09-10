@@ -1,4 +1,11 @@
+var mock = require('protractor-http-mock');
+
+
 describe('Github Profile finder', function() {
+
+  beforeEach(function() {
+    mock(['githubUserSearch.js'])
+  });
 
 
   var searchBox = element(by.model('searchCtrl.searchTerm'))
@@ -17,13 +24,18 @@ describe('Github Profile finder', function() {
 
   it('finds profiles', function() {
 
-    searchBox.sendKeys('spike01');
+    searchBox.sendKeys('ptolemy');
     searchButton.click();
 
     var profiles = element.all(by.repeater('user in searchCtrl.searchResult.items'));
-    expect(profiles.last().getText()).toEqual('spike01');
+    expect(profiles.first().getText()).toEqual('ptolemybarnes');
 
   });
+
+  afterEach(function(){
+    mock.teardown();
+  });
+
 });
 
 

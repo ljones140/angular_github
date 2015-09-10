@@ -1,16 +1,15 @@
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
   specs: ['githubProfileFeature.js'],
+  mocks: {
+  	default: [],
+  	dir: 'mocks'
+  },
 
-  // mocks: {
-  // 	default: [],
-  // 	dir: 'mocks' 
-  // },
-
-  // onPrepare: function(){
-  // 	require('protractor-http-mock').config = {
-  // 		rootDirectory: __direname, 
-  // 		protractorConfig: 'conf.js'
-  // 	};
-  // }
+  onPrepare: function(){
+  	require('protractor-http-mock').config = {
+  		rootDirectory: __dirname,
+  		protractorConfig: 'conf.js'
+  	};
+  }
 }
