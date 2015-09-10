@@ -30,7 +30,7 @@ describe('GitUserSearchController', function() {
     beforeEach(inject(function ($q, $rootScope, $controller) {
       scope = $rootScope;
       fakeSearch.query.and.returnValue($q.when( { data: gitHubSearchResponse }));
-      fakeCounter.query.and.returnValue($q.when({ data: '20' }));
+      // fakeCounter.query.and.returnValue($q.when({ data: '20' }));
       ctrl = $controller('GitUserSearchController');
     }));
     
